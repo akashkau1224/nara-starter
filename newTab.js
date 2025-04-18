@@ -17,6 +17,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial background image with 5 deers
   const initialBackground = "assets/original.jpg";
 
+  // Feature 1: Quotes
+  const inspirationalQuotes = [
+    "Every small step matters",
+    "You're doing great today",
+    "Take it one task at a time",
+    "Progress over perfection",
+    "You make the world better",
+    "Be proud of your journey",
+    "Small wins add up",
+    "Your effort matters",
+    "Take care of yourself",
+    "You've got this!"
+  ];
+
+  // Feature 2: Encouraging messages
+  const encouragingMessages = [
+    "great job!",
+    "you're doing amazing!",
+    "keep going!",
+    "proud of you!",
+    "that's the spirit!",
+    "wonderful progress!",
+    "you got this!",
+    "one step at a time!",
+    "small wins matter!",
+    "look at you go!"
+  ];
+
   // Background images for each category
   const backgroundSets = {
     daily: [
@@ -199,6 +227,56 @@ document.addEventListener("DOMContentLoaded", () => {
       img.onerror = reject;
       img.src = url;
     });
+  }
+
+  const quoteOverlay = document.createElement('div');
+  quoteOverlay.className = 'quote-overlay';
+  document.body.appendChild(quoteOverlay);
+
+  function showRandomQuote() {
+    const randomQuote = inspirationalQuotes[Math.floor(Math.random() * inspirationalQuotes.length)];
+    quoteOverlay.textContent = randomQuote;
+    
+    setTimeout(() => {
+      quoteOverlay.classList.add('visible');
+    }, 500);
+    
+    // Hide quote after 5 seconds
+    setTimeout(() => {
+      quoteOverlay.classList.remove('visible');
+    }, 5500);
+  }
+
+  // Show quote when page loads
+  showRandomQuote();
+
+  function showEncouragement() {
+    // Remove existing speech bubble if present
+    const existingBubble = document.querySelector('.speech-bubble');
+    if (existingBubble) {
+      existingBubble.remove();
+    }
+  
+    // Create new speech bubble
+    const bubble = document.createElement('div');
+    bubble.className = 'speech-bubble';
+    
+    // Get random encouraging message
+    const message = encouragingMessages[Math.floor(Math.random() * encouragingMessages.length)];
+    bubble.textContent = message;
+    
+    document.body.appendChild(bubble);
+    
+    // Show bubble with animation
+    setTimeout(() => {
+      bubble.classList.add('visible');
+    }, 100);
+    
+    // Remove bubble after 5 seconds
+    setTimeout(() => {
+      bubble.classList.remove('visible');
+      setTimeout(() => bubble.remove(), 500);
+    }, 5000);
   }
 
   // Function to change background with slide effect
@@ -671,6 +749,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tasks[originalIndex].completed = checkbox.checked;
 
         if (tasks[originalIndex].completed) {
+          showEncouragement();
           const deleteButton = taskItem.querySelector(".delete-task");
           if (deleteButton) deleteButton.remove();
         }

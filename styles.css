@@ -488,3 +488,54 @@ input[type="checkbox"]:checked+.task-text {
     opacity: 0.95;
     animation: welcomeFadeIn 1s ease-out forwards;
     }
+
+.quote-overlay {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    padding: 16px 32px;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+    font-family: 'Slackside One', cursive;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 80%;
+}
+    
+.quote-overlay.visible {
+    opacity: 0.9;
+}
+
+.speech-bubble {
+    position: fixed;
+    bottom: 20vh;
+    right: 3vw;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    padding: 16px 32px;
+    border-radius: 30px;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+    font-family: 'Slackside One', cursive;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.speech-bubble.visible {
+    opacity: 0.9;
+}
